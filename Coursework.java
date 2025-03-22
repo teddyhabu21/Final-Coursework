@@ -60,6 +60,14 @@ public class Merge_Sort{
             rightIndex++;
             mergeIndex++;
         }
+    }
+    public static void main(String[] args) {
+        ArrayList<String> words = new ArrayList<>(List.of("math", "data", "coursework", "friends", "java"));
+        System.out.println("Before sorting: " + words);
+        
+        mergeSort(words);
+        
+        System.out.println("After sorting: " + words);
     }    
 
 }
