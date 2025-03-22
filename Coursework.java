@@ -30,7 +30,7 @@ public class Merge_Sort{
         mergeSort(left);
         mergeSort(right);
 
-        //Merge 
+        merge(list, left, right)
        
     }
     //Method to merge the two halves back together.
