@@ -30,7 +30,7 @@ public class Merge_Sort{
         int rightIndex = 0;
         int mergeIndex = 0;
         
-        while (leftIndex < left.size && rightIndex < right.size){
+        while (leftIndex < left.size() && rightIndex < right.size()){
             if (left[leftIndex] <= right[rightIndex]){
                 merged[mergeIndex] = left[leftIndex];
                 leftIndex++;
@@ -41,24 +41,26 @@ public class Merge_Sort{
             }
             mergeIndex++;
         }
-        while (leftIndex < left.size){
+        while (leftIndex < left.size()){
             inputArray[mergeIndex] = left[leftIndex];
             leftIndex++;
             mergeIndex++;
         }
-        while (rightIndex < right.size){
+        while (rightIndex < right.size()){
             inputArray[mergeIndex] = right[rightIndex];
             rightIndex++;
             mergeIndex++;
         }
     }
+    //For Part 2
     public static void main(String[] args) {
-        ArrayList<String> words = new ArrayList<>(List.of("math", "data", "coursework", "friends", "java"));
-        System.out.println("Before sorting: " + words);
+        ArrayList<String> months = new ArrayList<>(List.of("January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"));
+        System.out.println("Before sorting: " + months);
         
-        SplitSort(words);
+        SplitSort(months);
         
-        System.out.println("After sorting: " + words);
+        System.out.println("After sorting: " + months);
     }    
 
 }
