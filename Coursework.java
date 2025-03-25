@@ -16,22 +16,12 @@ public class Merge_Sort{
         ArrayList<String> left = new ArrayList<>();
         ArrayList<String> right = new ArrayList<>();
 
-        // Copy elements to left half
-        for (int i = 0; i < cp; i++) {
-            left.add(list.get(i));
-        }
-
-        // Copy elements to right half
-        for (int i = cp; i < list.size(); i++) {
-            right.add(list.get(i));
-        }
-
         //splitting and sorting the two halves of the list
         SplitSort(left);
         SplitSort(right);
 
         //once split merging back the two halves
-        merge(list, left, right)
+        merge(list, left, right);
        
     }
     //Method to merge the two halves back together.
