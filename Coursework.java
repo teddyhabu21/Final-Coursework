@@ -3,64 +3,64 @@ import java.util.ArrayList;
 import java.util.List;
 
 // public class to perform the mergesort method
-public class Merge_Sort{
-    public static void SplitSort(ArrayList<String> list) {
+public class mergeSort{
+    public static ArrayList<String> splitSort(ArrayList<String> list) {
         if (list.size() <= 1) {
-            return; // when there is only 1 element or no element, it is already sorted.
+            return list; // when there is only 1 element or no element, it is already sorted.
         }
         
         //splitting the list into two: 1) From the first element to the center point(cp) and 2) from cp to the last element.
         int cp = list.size() / 2;
 
         // Create empty ArrayLists for left and right halves
-        ArrayList<String> left = new ArrayList<>();
-        ArrayList<String> right = new ArrayList<>();
+        ArrayList<String> left = new ArrayList<>(list.subList(0, cp));
+        ArrayList<String> right = new ArrayList<>(list.subList(cp, list.size()));
+        
+        left = splitSort(left);
+        right = splitSort(right);
 
-        //splitting and sorting the two halves of the list
-        SplitSort(left);
-        SplitSort(right);
-
-        //once split merging back the two halves
-        merge(list, left, right);
+        return merge(left, right);
        
     }
+    
     //Method to merge the two halves back together.
-     private static void merge(ArrayList<String> merged, ArrayList<String> left, ArrayList<String> right) {
+     private static ArrayList<String> merge(ArrayList<String> left, ArrayList<String> right) {
         int leftIndex = 0;
         int rightIndex = 0;
-        int mergeIndex = 0;
+        
+        ArrayList<String> merged = new ArrayList<>();
         
         while (leftIndex < left.size() && rightIndex < right.size()){
-            if (left[leftIndex] <= right[rightIndex]){
-                merged[mergeIndex] = left[leftIndex];
+            if (left.get(leftIndex).compareTo(right.get(rightIndex)) <= 0){
+                merged.add(left.get(leftIndex));
                 leftIndex++;
             }
             else{
-                merged[mergeIndex] = right[rightIndex];
+                merged.add(right.get(rightIndex));
                 rightIndex++;
             }
-            mergeIndex++;
         }
-        while (leftIndex < left.size()){
-            inputArray[mergeIndex] = left[leftIndex];
+        // If there are remaining elements in the left list, add them
+        while (leftIndex < left.size()) {
+            merged.add(left.get(leftIndex));
             leftIndex++;
-            mergeIndex++;
         }
-        while (rightIndex < right.size()){
-            inputArray[mergeIndex] = right[rightIndex];
+
+        // If there are remaining elements in the right list, add them
+        while (rightIndex < right.size()) {
+            merged.add(right.get(rightIndex));
             rightIndex++;
-            mergeIndex++;
         }
+        return merged;
     }
-    //For Part 2
     public static void main(String[] args) {
-        ArrayList<String> months = new ArrayList<>(List.of("January", "February", "March", "April", "May", "June",
+        ArrayList<String> words = new ArrayList<>(List.of("January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"));
-        System.out.println("Before sorting: " + months);
+        System.out.println("Before sorting: " + words);
         
-        SplitSort(months);
+        words = splitSort(words);
         
-        System.out.println("After sorting: " + months);
+        System.out.println("After sorting: " + words);
     }    
 
 }
