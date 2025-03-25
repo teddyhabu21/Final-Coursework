@@ -66,7 +66,7 @@ public class Merge_Sort{
         ArrayList<String> words = new ArrayList<>(List.of("math", "data", "coursework", "friends", "java"));
         System.out.println("Before sorting: " + words);
         
-        mergeSort(words);
+        SplitSort(words);
         
         System.out.println("After sorting: " + words);
     }    
