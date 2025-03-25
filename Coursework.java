@@ -4,7 +4,7 @@ import java.util.List;
 
 // public class to perform the mergesort method
 public class Merge_Sort{
-    public static void mergeSort(ArrayList<String> list) {
+    public static void SplitSort(ArrayList<String> list) {
         if (list.size() <= 1) {
             return; // when there is only 1 element or no element, it is already sorted.
         }
@@ -26,10 +26,11 @@ public class Merge_Sort{
             right.add(list.get(i));
         }
 
-        
-        mergeSort(left);
-        mergeSort(right);
+        //splitting and sorting the two halves of the list
+        SplitSort(left);
+        SplitSort(right);
 
+        //once split merging back the two halves
         merge(list, left, right)
        
     }
