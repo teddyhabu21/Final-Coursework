@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 // public class to perform the mergesort method
-public class mergeSort{
+public class Sorter {
     public static ArrayList<String> splitSort(ArrayList<String> list) {
         if (list.size() <= 1) {
             return list; // when there is only 1 element or no element, it is already sorted, so it should return itself.
@@ -19,7 +19,9 @@ public class mergeSort{
         left = splitSort(left);
         right = splitSort(right);
 
-        return merge(left, right);
+        ArrayList<String> sorted = merge(left, right);
+        
+        return sorted;
        
     }
     
@@ -27,16 +29,14 @@ public class mergeSort{
      private static ArrayList<String> merge(ArrayList<String> left, ArrayList<String> right) {
         int leftIndex = 0;
         int rightIndex = 0;
-        
         //creating an empty new list to store the sorted list
         ArrayList<String> merged = new ArrayList<>();
         
-        while (leftIndex < left.size() && rightIndex < right.size()){
-            if (left.get(leftIndex).compareTo(right.get(rightIndex)) <= 0){
+        while (leftIndex < left.size() && rightIndex < right.size()) {
+            if (left.get(leftIndex).compareTo(right.get(rightIndex)) <= 0) {
                 merged.add(left.get(leftIndex));
                 leftIndex++;
-            }
-            else{
+            } else {
                 merged.add(right.get(rightIndex));
                 rightIndex++;
             }
@@ -52,18 +52,7 @@ public class mergeSort{
             merged.add(right.get(rightIndex));
             rightIndex++;
         }
+
         return merged;
     }
-
-
-    public static void main(String[] args) {
-        ArrayList<String> words = new ArrayList<>(List.of("January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"));
-        System.out.println("Before sorting: " + words); //printing out the raw list.
-        
-        words = splitSort(words);
-        
-        System.out.println("After sorting: " + words);//printing the sorted list
-    }    
-
 }
